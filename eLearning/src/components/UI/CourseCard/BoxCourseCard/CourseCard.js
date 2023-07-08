@@ -24,23 +24,26 @@ const CourseCard = ({task}) => {
         variants={cardVariants}
         whileHover="hover"
       >
-       <Link to={`/topics/${task.courseId}`} style={{ cursor: 'pointer' }} className='no-text-decoration'>
+       <Link to={`/topics/${task.id}`} key={task.id} style={{ cursor: 'pointer' }} className='no-text-decoration'>
         <Card>
           <Card.Img variant="top" src={Onepercent} />
-          <Card.Body className="bg-white">
+          <Card.Body className="bg-white shadow-lg">
             <Card.Title className="text-black no-text-decoration card__title title__height">{task.title}</Card.Title>
             <Card.Text className="card__text no-text-decoration">
-              Some quick example text to build on the card title and make up the bulk of the card's content.
+              {
+                task.description.split(' ').slice(0, 8).join(' ')
+              }
             </Card.Text>
+
           </Card.Body>
-          <Card.Footer className="bg-white">
+          <Card.Footer className="bg-black">
             <Row>
               <Col lg="3">
                 <img src={User} alt="" className="user__icon" />
               </Col>
               <Col lg="7">
               <div className="d-flex align-items-center justify-content-center">
-              <p className="author__name no-text-decoration">John Angelo David</p>
+              <p className="author__name no-text-decoration text-white">John Angelo David</p>
               </div>
               </Col>
               <Col></Col>

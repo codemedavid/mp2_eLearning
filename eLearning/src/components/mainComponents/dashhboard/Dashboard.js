@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState, useEffect}from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import CourseCard from '../../UI/CourseCard/BoxCourseCard/CourseCard';
 import Tab from 'react-bootstrap/Tab';
+import axios from 'axios'
 import Tabs from 'react-bootstrap/Tabs';
 const COURSES = [
   {
@@ -37,6 +38,17 @@ const MY_COURSE = [
   }
 ]
 function Dashboard() {
+
+  const [course, setCourse] = useState([])
+
+  useEffect(() => {
+    fetch('/eLearning/allCourses', {method: 'GET', mode: 'cors'})
+    .then(response => response.json())
+    .then(data => {
+      setCourse(data)
+    })
+    .catch(err => console.error(err))
+  }, [])
   return (
     <div className="mt-5">
       <Container>
@@ -45,7 +57,7 @@ function Dashboard() {
             <Container>
               <Row>
               {
-                MY_COURSE.map(task => {
+                course.map(task => {
                   return(
                     <Col>
                   <CourseCard task={task} />
@@ -64,9 +76,10 @@ function Dashboard() {
             <Container>
               <Row>
               {
-                COURSES.map(task => {
+                course.map(task => {
                   return (<Col>
                   <CourseCard task={task} />
+                  <br />
                 </Col>)
                   
                 })

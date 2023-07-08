@@ -3,9 +3,9 @@ const cors =  require('cors')
 
 const app = express()
 
-var corOptions = {
+ var corOptions = {
     origin: 'http://localhost:8000'
-}
+ }
 
 const router = require('./Routes/courseRouter')
 
@@ -18,7 +18,6 @@ app.use(express.urlencoded({extended: true}))
 app.get('/', (req, res) => {
     res.json({message: 'hello from api'})
 })
-
 
 app.use('/eLearning', router)
 

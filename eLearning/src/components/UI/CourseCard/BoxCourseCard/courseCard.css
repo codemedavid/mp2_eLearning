@@ -5,6 +5,8 @@
 .card__text{
     font-size: 13px;
     line-height: 15px;
+    height: 30px;
+    overflow: hidden;
 }
 .user__icon{
     width: 30px;
