@@ -1,0 +1,21 @@
+.topic__img{
+    width: 140px;
+}
+.plyr__video-embed {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%; /* Aspect ratio 16:9 */
+  }
+  
+  .plyr__video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .plyr__control--overlaid {
+    opacity: 0 !important;
+  }
+  

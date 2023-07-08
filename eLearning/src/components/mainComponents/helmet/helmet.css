@@ -1,0 +1,34 @@
+.banner{
+    height: 280px;
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    background-image: linear-gradient(rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 0.2)), url('../../assets/images/banner.png');
+    justify-content: center; 
+    align-items: center;
+    background-size: cover;
+}
+
+.helmet__title .btn{
+    margin-top: 20px;
+}
+.helmet__title{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    color: white;
+}
+.helmet__title h2{
+    font-weight: 700;
+}
+.banner__img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: inherit;
+    object-fit: cover;
+}

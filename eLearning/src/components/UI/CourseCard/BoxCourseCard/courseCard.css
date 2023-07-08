@@ -1,0 +1,66 @@
+.card__title{
+    font-size: 15px;
+    font-weight: 600;
+}
+.card__text{
+    font-size: 13px;
+    line-height: 15px;
+}
+.user__icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+}
+.author__name{
+    align-self: center;
+    font-size: 13px;
+}
+.title__height{
+    height: 30px;
+    overflow: hidden;
+}
+@media (max-width:575px){
+
+    /* Card */
+    #uncontrolled-tab-example-tabpane-profile div .card{
+     width:173% !important;
+    }
+    
+    /* Division */
+    #uncontrolled-tab-example-tabpane-profile .container .row .col > div{
+     margin-bottom:33px;
+    }
+    
+   }
+
+   @media (max-width:400px){
+
+    /* Card */
+    #uncontrolled-tab-example-tabpane-profile div .card{
+     width:140% !important;
+    }
+    
+    /* Division */
+    #uncontrolled-tab-example-tabpane-profile .container .row .col > div{
+     margin-bottom:33px;
+    }
+    
+   }
+
+   @media (max-width:300px){
+
+    /* Card */
+    #uncontrolled-tab-example-tabpane-profile div .card{
+     width:100% !important;
+    }
+    
+    /* Division */
+    #uncontrolled-tab-example-tabpane-profile .container .row .col > div{
+     margin-bottom:33px;
+    }
+    
+   }
+
+ .no-text-decoration{
+    text-decoration: none;
+ }

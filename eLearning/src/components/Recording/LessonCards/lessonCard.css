@@ -1,0 +1,19 @@
+.lesson__img-box{
+   
+    width: 38%
+}
+.lesson__img{
+    width: 80%;
+    margin-left: 10px;
+}
+.lesson__desc{
+   
+    width: 60%;
+}
+.recording__list{
+    height: 80%;
+    border-radius: 2px;
+}
+.instructor__card-lesson{
+    margin-top: -80px;
+}
