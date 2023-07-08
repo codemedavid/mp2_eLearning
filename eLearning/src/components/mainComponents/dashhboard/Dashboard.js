@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import CourseCard from '../UI/CourseCard/BoxCourseCard/CourseCard';
+import CourseCard from '../../UI/CourseCard/BoxCourseCard/CourseCard';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 const COURSES = [

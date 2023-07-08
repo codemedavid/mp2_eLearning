@@ -3,7 +3,7 @@
     padding-top: 20px;
     width: 100%;
     display: flex;
-    background-image: linear-gradient(rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 0.2)), url('../../assets/images/banner.png');
+    background-image: linear-gradient(rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 0.2)), url('../../../assets/images/banner.png');
     justify-content: center; 
     align-items: center;
     background-size: cover;

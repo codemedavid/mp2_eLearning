@@ -4,7 +4,7 @@ import {faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
 import "./header.css";
-import LogoIcon from '../../assets/images/icon.png'
+import LogoIcon from '../../../assets/images/icon.png'
 function Header() {
 
 	return (

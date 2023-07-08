@@ -1,9 +1,8 @@
 import React from 'react'
-import Helmet from '../components/helmet/Helmet'
+import Helmet from '../components/mainComponents/helmet/Helmet'
 import Banner from '../assets/images/banner.png'
 import TopicSection from '../components/TopicSection/TopicSection'
-import { useParams } from 'react-router-dom'
-import Header from '../components/header/Header'
+import Header from '../components/mainComponents/header/Header'
 function Topics() {
   return (
     <div>

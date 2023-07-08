@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/header/Header';
+import Header from '../components/mainComponents/header/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Dashboard from '../components/dashhboard/Dashboard';
+import Dashboard from '../components/mainComponents/dashhboard/Dashboard'
 
 const MainDashboard = () => {
   return (

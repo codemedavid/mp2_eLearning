@@ -1,7 +1,6 @@
 import React from 'react'
 import './helmet.css'
 import { Link } from 'react-router-dom'
-import Banner from '../../assets/images/banner.png'
 function Helmet(props) {
     const bg = props.backgroundImage
     const backgroundImage = {
