@@ -1,7 +1,23 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import './helmet.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import axios from 'axios'
 function Helmet(props) {
+  
+    const {id} = useParams()
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    useEffect(() => {
+      const getSingleCourseData = async () => {
+        const {data} = await axios.get(`http://localhost:8000/eLearning/course/${id}`)
+        console.log(data)
+        setTitle(data.title)
+        setDescription(data.description)
+      }
+      getSingleCourseData()
+    }, [id])
+
+
     const bg = props.backgroundImage
     const backgroundImage = {
         backgroundImage: `linear-gradient(rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0.5)), url(${bg})`
@@ -10,8 +26,8 @@ function Helmet(props) {
     <div>
         <div className="banner" style={backgroundImage}>
       <div className="helmet__title">
-        <h2>1% Freelancer Formula Accelerator</h2>
-        <p>Apply The 1% Formula faster and stronger through a step-by-step learning and implementation process!</p>
+        <h2>{title} </h2>
+        <p>{description}</p>
         <button className='btn btn-primary'><Link className="text-white" to={'/lessons/2'}>Resume Course </Link></button>
       </div>
       </div>

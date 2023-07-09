@@ -1,17 +1,20 @@
 import React from 'react'
 import InlineCourseCard from '../CourseCard/InlineCourseCard/InlineCourseCard'
-function InlineCourse() {
+import LessonCard from '../../Recording/LessonCards/LessonCard'
+import RecordingList from '../../Recording/RecordingList'
+function InlineCourse({task}) {
   return (
     <div>
-        <h3 className='m-2 mt-4 fs-4 text-white fw-bold'>Welcome To The 1% Freelancer Formula Accelerator</h3>
+        <h3 className='m-2 mt-4 fs-4 text-white fw-bold'>{task.title}</h3>
              
              <p className='text-white mx-2 lh-sm'>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
                     Repellat modi illum quae ullam porro, repudiandae pariatur nulla suscipit debitis quas,
                     unde, ducimus dicta iusto tenetur nihil hic earum. Ea, dolores.
             </p>
-          <InlineCourseCard />
-          <InlineCourseCard />
+            {task.topics.map(topic => (
+              <InlineCourseCard task={topic.title} name={`Step${topic.id} : `} id={topic.id}/>
+        ))}
     </div>
   )
 }

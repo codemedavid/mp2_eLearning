@@ -35,8 +35,8 @@ function AddCourse() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
-    addCourseHandler(); // Call the addCourseHandler function
+    e.preventDefault(); 
+    addCourseHandler(); 
   };
 
   return (

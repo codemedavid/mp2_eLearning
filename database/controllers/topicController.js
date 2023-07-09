@@ -6,9 +6,12 @@ const Topic = db.topics
 
 
 const addTopic = async (req, res) => {
+    const id = req.params.id
     let info = {
+        course_id: id,
         title: req.body.title ? req.body.title : 'No title',
         description: req.body.description ? req.body.description : 'No Descriptions',
+        url: req.body.url ? req.body.url : 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     }
 
 

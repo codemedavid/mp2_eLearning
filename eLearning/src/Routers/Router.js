@@ -4,16 +4,17 @@ import MainDashboard from '../pages/MainDashboard';
 import Topics from '../pages/Topics';
 import Lessons from '../pages/Lessons'
 import AdminDashboard from '../pages/AdminDashboard';
-import UpdateCourse from '../components/adminComponents/EditCourse/UpdateCourse'
+import UpdateCoursePage from '../pages/UpdateCoursePage';
+
 function Router() {
   return (
     <Routes>
   
         <Route path="/" element={<MainDashboard />} />
-        <Route path="/topics/:courseId" element={<Topics/>} />
-        <Route path='/lessons/:topicId' element={<Lessons />}/>
+        <Route path="/topics/:id" element={<Topics/>} />
+        <Route path='/lessons/:id' element={<Lessons />}/>
         <Route path='/admin' element={<AdminDashboard />}/>
-        <Route path='/admin/edit/:id' element={<AdminDashboard />}/>
+        <Route path='/admin/edit/:id' element={<UpdateCoursePage />}/>
     
     </Routes>
   );

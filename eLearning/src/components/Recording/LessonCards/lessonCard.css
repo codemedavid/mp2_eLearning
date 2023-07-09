@@ -17,3 +17,8 @@
 .instructor__card-lesson{
     margin-top: -80px;
 }
+.no-decoration{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}

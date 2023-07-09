@@ -20,3 +20,6 @@
     height: inherit;
     overflow-x: hidden;
 }
+.recordings{
+    height: 560px;
+}

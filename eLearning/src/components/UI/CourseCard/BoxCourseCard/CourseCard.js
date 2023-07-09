@@ -24,7 +24,7 @@ const CourseCard = ({task}) => {
         variants={cardVariants}
         whileHover="hover"
       >
-       <Link to={`/topics/${task.id}`} key={task.id} style={{ cursor: 'pointer' }} className='no-text-decoration'>
+       <Link to={`/topics/${task.id}`} style={{ cursor: 'pointer' }} className='no-text-decoration'>
         <Card>
           <Card.Img variant="top" src={Onepercent} />
           <Card.Body className="bg-white shadow-lg">

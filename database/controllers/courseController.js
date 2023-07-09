@@ -56,13 +56,15 @@ const getPublishedCourse = async (req, res) => {
 
  
 const getCourseTopics = async (req, res) => {
+
+  const id = req.params.id
     try {
       const data = await Course.findAll({
         include: [{
           model: Topic,
           as: 'topics'
         }],
-        where: { id: 2 }
+        where: { id: id }
       });
   
       // Return the response with the fetched data
