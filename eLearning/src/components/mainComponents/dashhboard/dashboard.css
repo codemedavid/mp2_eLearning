@@ -1,0 +1,22 @@
+.mt-5 ul{
+    border-width:0px;
+   }
+   
+   
+
+   /* Uncontrolled tab profile */
+
+   #uncontrolled-tab-profile{
+
+    border-bottom-left-radius:6px;
+    border-bottom-right-radius:6px;
+   }
+   
+   /* Uncontrolled tab home */
+   #uncontrolled-tab-home{
+
+    border-bottom-left-radius:6px;
+    border-bottom-right-radius:6px;
+   }
+ 
+   

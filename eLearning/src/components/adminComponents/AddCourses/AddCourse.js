@@ -6,21 +6,18 @@ import Button from 'react-bootstrap/Button';
 function AddCourse() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [img, setImg] = useState(null);
 
   const addCourseHandler = () => {
-    const data = {
-      title: title,
-      description: description,
-      published: true
-    };
+    const formData = new FormData();
+    formData.append('img', img);
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('published', true);
 
     fetch('/eLearning/addCourse', {
       method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
+      body: formData,
     })
       .then(response => response.json())
       .then(result => {
@@ -29,14 +26,14 @@ function AddCourse() {
         // Clear the form fields after a successful submission
         setTitle('');
         setDescription('');
-        
+        setImg(null);
       })
       .catch(err => console.error(err));
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-    addCourseHandler(); 
+    e.preventDefault();
+    addCourseHandler();
   };
 
   return (
@@ -50,7 +47,12 @@ function AddCourse() {
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} type='text' value={description} onChange={(e) => setDescription(e.target.value)} />
+            <Form.Control as="textarea" rows={3} value={description} onChange={(e) => setDescription(e.target.value)} />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>File</Form.Label>
+            <Form.Control type='file' onChange={(e) => setImg(e.target.files[0])} />
           </Form.Group>
 
           <Button variant="primary" type="submit">

@@ -5,6 +5,7 @@ import Topics from '../pages/Topics';
 import Lessons from '../pages/Lessons'
 import AdminDashboard from '../pages/AdminDashboard';
 import UpdateCoursePage from '../pages/UpdateCoursePage';
+import AddTopicPage from '../pages/AddTopicPage';
 
 function Router() {
   return (
@@ -15,6 +16,7 @@ function Router() {
         <Route path='/lessons/:id' element={<Lessons />}/>
         <Route path='/admin' element={<AdminDashboard />}/>
         <Route path='/admin/edit/:id' element={<UpdateCoursePage />}/>
+        <Route path='/admin/addTopic/:id' element={<AddTopicPage />}/>
     
     </Routes>
   );

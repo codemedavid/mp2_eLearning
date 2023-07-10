@@ -23,3 +23,27 @@
 .recordings{
     height: 560px;
 }
+/* React player  preview */
+.recording__video div .react-player__preview{
+    padding-left:0px;
+    margin-left:0px;
+    transform:translatex(0px) translatey(0px);
+   }
+   
+   /* React player  preview */
+   #root .App div .bg-black .container .row .my-4 .recording .recording__video div .react-player__preview{
+    width:99% !important;
+   }
+   
+   @media (max-width:767px){
+   
+    /* React player  preview */
+    #root .App div .bg-black .container .row .my-4 .recording .recording__video div .react-player__preview{
+     width:509px !important;
+    }
+    
+   }
+   
+   .video{
+    width: inherit;
+   }

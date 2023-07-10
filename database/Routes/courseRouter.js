@@ -3,7 +3,7 @@ const topicController = require('../controllers/topicController')
 
 const router = require('express').Router()
 
-router.post('/addCourse', courseController.addCourse)
+router.post('/addCourse', courseController.upload ,courseController.addCourse)
 
 router.put('/updateCourse/:id', courseController.updateCourse)
 

@@ -1,12 +1,15 @@
 const db = require('../models')
 
-
+const multer = require('multer')
+const path = require('path')
 const Course = db.courses
 const Topic = db.topics
 
 
+
 const addCourse = async (req, res) => {
     let info = {
+        img: req.file ? req.file.path : 'Images\onepercent.png',
         title: req.body.title ? req.body.title : 'No title',
         description: req.body.description ? req.body.description : 'No Descriptions',
         published: req.body.published ? req.body.published : false
@@ -76,7 +79,30 @@ const getCourseTopics = async (req, res) => {
     }
   };
 
-
+  const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'Images')
+    },
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + path.extname(file.originalname))
+    }
+  })
+  
+  const upload = multer({
+    storage: storage,
+    limits: {fileSize: '1000000'},
+    fileFilter: (req, file, cb) => {
+      const fileTypes = /jpeg|jpg|png|gif/
+      const mimeType = fileTypes.test(file.mimetype)
+      const extname = fileTypes.test(path.extname(file.originalname))
+  
+  
+      if(mimeType && extname) {
+        return cb(null, true)
+      }
+      cb('Give proper files formate to upload')
+    }
+  }).single('img')
   
 module.exports = {
     addCourse, 
@@ -85,5 +111,6 @@ module.exports = {
     updateCourse,
     deleteCourse,
     getPublishedCourse,
-    getCourseTopics
+    getCourseTopics,
+    upload
 }

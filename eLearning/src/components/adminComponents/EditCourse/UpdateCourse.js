@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -8,6 +8,15 @@ function UpdateCourse() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const {id} = useParams()
+
+  useEffect(() => {
+    fetch(`http://localhost:8000/eLearning/course/${id}`, {method: 'GET', mode: 'cors'})
+    .then(response => response.json())
+    .then(data => {
+      setTitle(data)
+    })
+    .catch(err => console.error(err))
+  }, [])
   const updateCourseHandler = () => {
     const data = {
       title: title,
@@ -25,12 +34,8 @@ function UpdateCourse() {
     })
       .then(response => response.json())
       .then(result => {
-        // Handle the response or update the UI accordingly
-
-        // Clear the form fields after a successful submission
         setTitle('');
         setDescription('');
-        
       })
       .catch(err => console.error(err));
   };
@@ -38,7 +43,11 @@ function UpdateCourse() {
   const handleSubmit = (e) => {
     e.preventDefault(); 
     updateCourseHandler(); 
+  
   };
+
+
+  
 
   return (
     <>
@@ -47,11 +56,11 @@ function UpdateCourse() {
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Title</Form.Label>
-            <Form.Control type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+            <Form.Control type="text" placeholder={title.title} onChange={(e) => setTitle(e.target.value)} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} type='text' value={description} onChange={(e) => setDescription(e.target.value)} />
+            <Form.Control as="textarea" rows={3} type='text' placeholder={title.description} onChange={(e) => setDescription(e.target.value)} />
           </Form.Group>
 
           <Button variant="primary" type="submit">

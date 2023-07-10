@@ -19,6 +19,10 @@ app.get('/', (req, res) => {
     res.json({message: 'hello from api'})
 })
 
+//static image sfolder
+
+app.use('/Images', express.static('./Images'))
+
 app.use('/eLearning', router)
 
 const PORT = process.env.PORT || 8000

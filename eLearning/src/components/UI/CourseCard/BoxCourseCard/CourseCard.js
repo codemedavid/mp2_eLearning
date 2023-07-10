@@ -26,7 +26,7 @@ const CourseCard = ({task}) => {
       >
        <Link to={`/topics/${task.id}`} style={{ cursor: 'pointer' }} className='no-text-decoration'>
         <Card>
-          <Card.Img variant="top" src={Onepercent} />
+          <Card.Img variant="top" src={task.img} style={{height: "150px", objectFit: "cover" }}/>
           <Card.Body className="bg-white shadow-lg">
             <Card.Title className="text-black no-text-decoration card__title title__height">{task.title}</Card.Title>
             <Card.Text className="card__text no-text-decoration">
