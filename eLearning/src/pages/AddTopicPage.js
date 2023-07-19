@@ -8,6 +8,7 @@ function AddTopicPage() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [url, setUrl] = useState('');
+    const token = localStorage.getItem('token');
     const addTopicHandler = () => {
       const data = {
         title: title,
@@ -20,7 +21,8 @@ function AddTopicPage() {
         method: 'POST',
         mode: 'cors',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `${token}`
         },
         body: JSON.stringify(data)
       })

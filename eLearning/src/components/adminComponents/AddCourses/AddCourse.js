@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-
+import {useNavigate} from 'react-router-dom'
 function AddCourse() {
+
+  const navigate = useNavigate()
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [img, setImg] = useState(null);
@@ -14,10 +16,13 @@ function AddCourse() {
     formData.append('title', title);
     formData.append('description', description);
     formData.append('published', true);
-
+    const token = localStorage.getItem('token');
     fetch('/eLearning/addCourse', {
       method: 'POST',
       body: formData,
+      headers: {
+        'Authorization': `${token}` 
+      }
     })
       .then(response => response.json())
       .then(result => {
@@ -27,6 +32,7 @@ function AddCourse() {
         setTitle('');
         setDescription('');
         setImg(null);
+        navigate('/')
       })
       .catch(err => console.error(err));
   };

@@ -4,6 +4,7 @@ module.exports = {
     PASSWORD: 'admin',
     DB: 'eLearning_db',
     dialect: 'mysql',
+    secretKey: 'your-secret-key',
 
     pool: {
         max: 5,
