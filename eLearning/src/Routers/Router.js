@@ -7,9 +7,11 @@ import AdminDashboard from '../pages/AdminDashboard';
 import UpdateCoursePage from '../pages/UpdateCoursePage';
 import AddTopicPage from '../pages/AddTopicPage';
 import LoginPage from '../pages/LoginPage';
+import Logout from '../pages/Logout';
 function Router() {
   return (
     <Routes>
+    <Route path='/logout' element={<Logout />} />
     <Route path='/login' element={<LoginPage />}></Route>
         <Route path="/" element={<MainDashboard />} />
         <Route path="/topics/:id" element={<Topics/>} />

@@ -1,5 +1,7 @@
 .topic__img{
     width: 140px;
+    height: 70px;
+    object-fit: cover;
 }
 .plyr__video-embed {
     position: relative;

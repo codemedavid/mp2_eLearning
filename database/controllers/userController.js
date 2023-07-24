@@ -51,7 +51,7 @@ const loginUser = async (req, res) => {
     );
 
     // Return the token as part of the response
-    res.status(200).json({ token });
+    res.status(200).json({ token, userType:user.userType });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });

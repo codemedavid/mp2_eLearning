@@ -9,13 +9,11 @@ import './topicSection.css';
 function TopicSection() {
   const [courseData, setCourseData] = useState(null);
   const { id } = useParams();
-  const token = localStorage.getItem('token');
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/eLearning/courseTopics/${id}`, {headers: {
-          'Authorization': `Bearer ${token}` }
-        });
+        const response = await axios.get(`http://localhost:8000/eLearning/courseTopics/${id}`);
         setCourseData(response.data);
       } catch (error) {
         console.error(error);

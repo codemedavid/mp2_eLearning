@@ -5,6 +5,7 @@ import Tab from 'react-bootstrap/Tab';
 import './dashboard.css';
 import axios from 'axios';
 import Tabs from 'react-bootstrap/Tabs';
+import UnenrolledCourseCard from '../../UI/CourseCard/Unenrolled Card/UnenrolledCourseCard';
 
 function Dashboard() {
   const [courses, setCourses] = useState([]);
@@ -20,7 +21,7 @@ function Dashboard() {
         if (Array.isArray(data)) {
           setCourses(data);
         } else {
-          setError('Invalid data received');
+          setError('You have to log in');
         }
         setLoading(false);
       })
@@ -53,11 +54,11 @@ function Dashboard() {
               {courses.map(task => {
   console.log('Course:', task);
   return (
-    <Col lg={4} md={6} sm={12} key={task.id}>
+    <Col lg={3} md={6} sm={12} key={task.id}>
       {task && task.id ? (
         <CourseCard task={task} />
       ) : (
-        <p>Invalid course data</p>
+        <p>You have to log in</p>
       )}
       <br />
     </Col>
@@ -73,9 +74,9 @@ function Dashboard() {
               {courses.map(task => {
   console.log('Course:', task);
   return (
-    <Col lg={4} md={6} sm={12} key={task.id}>
+    <Col lg={3} md={6} sm={12} key={task.id}>
       {task && task.id ? (
-        <CourseCard task={task} />
+        <UnenrolledCourseCard task={task} />
       ) : (
         <p>Invalid course data</p>
       )}

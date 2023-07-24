@@ -36,7 +36,7 @@ db.sequelize = sequelize
 db.courses = require('./coursesModel')(sequelize, DataTypes)
 db.topics = require('./topicsModel')(sequelize, DataTypes)
 db.user = require('./userModel')(sequelize, DataTypes)
-
+db.enroll = require('./enrollModel')(sequelize, DataTypes)
 db.sequelize.sync({force: false})
 .then(() => {
     console.log('syncing done')

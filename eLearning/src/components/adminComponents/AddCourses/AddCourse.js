@@ -11,6 +11,7 @@ function AddCourse() {
   const [img, setImg] = useState(null);
 
   const addCourseHandler = () => {
+    //ok
     const formData = new FormData();
     formData.append('img', img);
     formData.append('title', title);
@@ -68,6 +69,6 @@ function AddCourse() {
       </Container>
     </>
   );
-}
+} 
 
 export default AddCourse;

@@ -1,6 +1,9 @@
 
 module.exports = (sequelize, DataTypes) => {
     const Topic = sequelize.define('topics', {
+        img: {
+            type: DataTypes.STRING
+        },
         title: {
             type: DataTypes.STRING,
             allowNull: false

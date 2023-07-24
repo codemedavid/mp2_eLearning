@@ -9,7 +9,7 @@ function InlineCourseCard(task) {
     <Link to={`/lessons/${task.id}`}>
     <Row className='my-3'>
         <Col lg="3">
-        <img src={Topic1} className="topic__img px-2" alt="" />
+        <img src={task.img} className="topic__img px-2" alt="" />
         </Col>
         <Col lg="8">
             <h3 className='fs-5 text-white d-flex align-items-center h-100 w-100 overflow-hidden'>

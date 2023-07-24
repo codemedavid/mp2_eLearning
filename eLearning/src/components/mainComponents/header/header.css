@@ -9,6 +9,9 @@
 .logo__icon img{
     width: 60px;
 }
+.gap-2 .dropdown-end label{
+	box-shadow:0px 4px 0px -4px rgba(0,0,0,0.35);
+   }
 
 :root {
 	--mainColor: #f3f3f3;
