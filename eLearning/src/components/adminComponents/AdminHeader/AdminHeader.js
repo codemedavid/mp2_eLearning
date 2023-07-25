@@ -18,7 +18,7 @@ function AdminHeader() {
     </div>
   </div>
       <div className="navbar-center">
-      <a className="btn btn-ghost normal-case text-xl">Admin</a>
+      <a className="btn btn-ghost normal-case text-xl">Instructor</a>
       </div>
   
   </div>

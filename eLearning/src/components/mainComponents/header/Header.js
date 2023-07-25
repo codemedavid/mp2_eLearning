@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,7 +8,7 @@ import LogoIcon from '../../../assets/images/icon.png'
 
 function Header() {
   const navigate = useNavigate();
-
+  const [role, setRole] = useState()
   const logout = () => {     
     localStorage.removeItem("token");
     localStorage.removeItem("userType");
@@ -18,6 +18,15 @@ function Header() {
 
   // Check if "token" is present in localStorage
   const token = localStorage.getItem("token");
+  const userType = localStorage.getItem('userType')
+
+ 
+  const handleLogoutClick = () => {
+    const confirmEnroll = window.confirm('Are you sure you want to logout?');
+    if (confirmEnroll) {
+      logout();
+    }
+  };
 
   return (
     <div className="navbar bg-base-50">
@@ -39,7 +48,7 @@ function Header() {
           <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
             <li>
               <Link className="justify-between" to={'/'}>
-                Profile
+                Courses
                 <span className="badge">New</span>
               </Link>
             </li>
@@ -47,7 +56,7 @@ function Header() {
             {
               // Conditional rendering of "Login" or "Logout" button
               token
-                ? <li><a onClick={logout}>Logout</a></li>
+                ? <li><a onClick={handleLogoutClick}>Logout</a></li>
                 : <li><Link to={'/login'}>Login</Link></li>
             }
           </ul>

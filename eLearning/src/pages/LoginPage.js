@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { MDBContainer, MDBTabs, MDBTabsItem, MDBTabsLink, MDBTabsContent, MDBTabsPane, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import Header from '../components/mainComponents/header/Header';
+import { useNavigate } from 'react-router-dom';
 function LoginPage() {
-  
+  const navigate = useNavigate()
   const [justifyActive, setJustifyActive] = useState('tab1');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,19 +36,27 @@ function LoginPage() {
         // Assuming the server returns a token upon successful login
         const token = result.token;
         const userType = result.userType;
-
+        const userId = result.userId;
         // Save the token in local storage for future authentication
-        localStorage.setItem('token', token);
-        localStorage.setItem('userType', userType);
+        
 
         // Redirect to the appropriate page based on user type
         console.log(token);
-        if (userType === 'instructor') {
-          // Redirect to the instructor dashboard
-          window.location.href = '/admin';
-        } else {
-          // Redirect to the default user dashboard
-          window.location.href = '/';
+        if(token != null){
+          if (userType === 'instructor') {
+            // Redirect to the instructor dashboard
+            localStorage.setItem('token', token);
+        localStorage.setItem('userType', userType);
+        localStorage.setItem('userId', userId)
+            navigate('/admin')
+          } else {
+            // Redirect to the default user dashboard
+            localStorage.setItem('token', token);
+        localStorage.setItem('userType', userType);
+        localStorage.setItem('userId', userId)
+            navigate('/')
+            
+          }
         }
       })
       .catch(err => console.error(err));
@@ -74,19 +83,24 @@ function LoginPage() {
       // Assuming the server returns a token upon successful registration
       const token = response.data.token;
       const userType = response.data.userType;
+      const userId = response.data.userId;
 
       // Save the token and user type in local storage for future authentication
       localStorage.setItem('token', token);
       localStorage.setItem('userType', userType);
-
+      localStorage.setItem('userId', userId)
+      navigate('/login')
       // Redirect to the appropriate page based on user type
-      if (userType === 'instructor') {
-        // Redirect to the instructor dashboard
-        window.location.href = '/admin';
-      } else {
-        // Redirect to the default user dashboard
-        window.location.href = '/';
+      if(token != null){
+        if (userType === 'instructor') {
+          // Redirect to the instructor dashboard
+          navigate('/admin')
+        } else {
+          // Redirect to the default user dashboard
+          navigate('/')
+        }
       }
+      
     } catch (error) {
       console.error(error);
     }

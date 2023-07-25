@@ -7,8 +7,8 @@ function Topics() {
   return (
     <div>
        <Header></Header>
-    <Helmet backgroundImage={Banner}></Helmet>
-    <TopicSection></TopicSection>
+       <Helmet backgroundImage={Banner}></Helmet>
+       <TopicSection></TopicSection>
     </div>
   )
 }

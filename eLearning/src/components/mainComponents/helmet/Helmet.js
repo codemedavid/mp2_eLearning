@@ -28,7 +28,7 @@ function Helmet(props) {
       <div className="helmet__title">
         <h2>{title} </h2>
         <p className='overflow-hidden' style={{height: "100px"}}>{description}</p>
-        <button className='btn btn-primary'><Link className="text-white" to={'/lessons/2'}>Resume Course </Link></button>
+    
       </div>
       </div>
     </div>

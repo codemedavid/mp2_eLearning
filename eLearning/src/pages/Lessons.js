@@ -15,11 +15,11 @@ function Lessons() {
           <Recording />
         </Col>
         <Col lg="4" className='my-4 d-flex justify-content-center align-items-center flex-column'>
-        <div className="recordings">
-        <RecordingList/>
+        <div className="recordings w-100">
+          <RecordingList/>
         </div>
         <div className="instructor__card-lesson">
-        <InstructorCard />
+          <InstructorCard />
         </div>
          
         </Col>

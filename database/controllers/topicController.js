@@ -26,7 +26,23 @@ const getAllTopic = async (req, res) => {
     res.status(200).send(topics)
 }
 
+const getTopicCourse = async (req, res) => {
+  const { course_id } = req.params;
 
+  if (!course_id) {
+    return res.status(400).json({ error: 'Topic id and Course ID are required in the URL parameters' });
+  }
+
+  try {
+    // Find all topic courses that belong to the given course_id
+    const topicCourses = await Topic.findAll({ where: { course_id } });
+
+    res.status(200).json(topicCourses);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while fetching topic courses' });
+  }
+};
 const getOneTopic = async (req, res) => {
     
     let id = req.params.id
@@ -83,5 +99,6 @@ module.exports = {
     getOneTopic,
     updateTopic,
     deleteTopic,
-    upload
+    upload,
+    getTopicCourse
 }

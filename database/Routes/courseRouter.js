@@ -20,6 +20,7 @@ router.put('/updateTopic/:id', authMiddleware, isAdmin, topicController.updateTo
 router.delete('/deleteTopic/:id', authMiddleware, isAdmin, topicController.deleteTopic);
 router.get('/allTopics',  topicController.getAllTopic);
 router.get('/topic/:id',  topicController.getOneTopic);
+router.get('/topics/:course_id/',  topicController.getTopicCourse);
 
 // Authentication routes
 router.post('/signup', userController.createUser);
@@ -28,6 +29,8 @@ router.post('/login', userController.loginUser);
 
 //enrollment
 router.post('/enroll', enrollController.enrollment)
+router.get('/enroll/:userId/:courseId', enrollController.getEachEnrolled);
+router.get('/get/enroll/course/:userId', enrollController.getEnrolledUser);
 // Middleware to check if the user is an admin
 function isAdmin(req, res, next) {
   const userType = req.user.userType;

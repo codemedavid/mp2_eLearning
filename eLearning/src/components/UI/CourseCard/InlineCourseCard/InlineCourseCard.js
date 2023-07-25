@@ -2,11 +2,13 @@ import React from 'react'
 import {  Row, Col } from 'react-bootstrap'
 import Topic1 from '../../../../assets/images/topic1.png'
 import './inlineCourseCard.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 function InlineCourseCard(task) {
+  const course_id = useParams({})
+  console.log(course_id.id)
   return (
     <div>
-    <Link to={`/lessons/${task.id}`}>
+    <Link to={`/lessons/${course_id.id}/${task.id}`}>
     <Row className='my-3'>
         <Col lg="3">
         <img src={task.img} className="topic__img px-2" alt="" />
