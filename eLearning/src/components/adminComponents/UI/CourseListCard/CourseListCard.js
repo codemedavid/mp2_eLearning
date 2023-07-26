@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Container, Table, Row, Col, Card } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 import Topic1 from '../../../../assets/images/topic1.png';
 import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-
+import './CourseListCard.css'
+import { ToastContainer, toast } from 'react-toastify';
+import User from '../../../../assets/images/instructor.jpg'
 function CourseListCard() {
+  const navigate = useNavigate()
   const [course, setCourse] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const token = localStorage.getItem('token');
-
+  const cardVariants = {
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
   useEffect(() => {
     fetch('/eLearning/allCourses', {
       method: 'GET',
@@ -59,42 +70,71 @@ function CourseListCard() {
     }
     window.location.reload()
   };
+  const warn = () =>
+  toast.warn(' Course Has Been Deleted', {
+    position: 'top-right',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+  });
+  const handleEnrollClick = (id) => {
+    const confirmEnroll = window.confirm('Are you sure you want to delete this course?');
+    if (confirmEnroll) {
+      handleDelete(id);
+      navigate('/')
+      warn()
+    }
+  };
 
   return (
-    <div>
+    <div style={{marginBottom: '20px'}}>
       <Container>
-        <Table responsive="lg">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>img</th>
-              <th>title</th>
-              <th>action</th>
-            </tr>
-          </thead>
-          <tbody>
+          <Row>
             {course.map(task => (
-              <tr key={task.id}>
-                <td>{task.id}</td>
-                <td><img src={task.img} alt="" style={{ width: "20%" }} /></td>
-                <td style={{ width: "20%" }}><Link to={`/admin/addTopic/${task.id}`}>{task.title}</Link></td>
-                <td>
-                  <div className="d-flex gap-3" style={{ width: "20%" }}>
-                    <Link to={`/admin/edit/${task.id}`}>
-                      <div className="edit">
-                        <FontAwesomeIcon icon={faPencil} style={{ color: "#11ac06" }} className='fs-4' />
-                      </div>
-                    </Link>
-                    <div className="delete" onClick={() => handleDelete(task.id)}>
-                      <FontAwesomeIcon icon={faTrash} style={{ color: "#8f0e05" }} className='fs-4' />
-                    </div>
-                  </div>
-                </td>
-              </tr>
+              <Col lg={3} className='courseCard'>
+     
+ 
+     <motion.div style={{ width: '14rem' }} variants={cardVariants} whileHover='hover'>
+         <Card>
+       <Link to={`/admin/addTopic/${task.id}`} style={{ cursor: 'pointer' }} className='no-text-decoration'>
+           <Card.Img variant='top' src={task.img} style={{ height: '150px', objectFit: 'cover' }} />
+           <Card.Body className='bg-white shadow-lg'>
+             <Card.Title className='text-black no-text-decoration card__title title__height'>
+             {task.title.length > 15 ? task.title.slice(0, 15) + '...' : task.title}
+             </Card.Title>
+             {/* Use the description variable */}
+             <Card.Text className='card__text no-text-decoration'>{task.description}</Card.Text>
+           </Card.Body>
+           </Link>
+           <Card.Footer className='bg-black'>
+             <Row>
+               <div className="d-flex gap-3" style={{ width: "20%" }}>
+                   <Link to={`/admin/edit/${task.id}`}>
+                     <div className="edit">
+                       <FontAwesomeIcon icon={faPencil} style={{ color: "#11ac06" }} className='fs-4' />
+                     </div>
+                   </Link>
+                   <div className="delete" onClick={() => handleEnrollClick(task.id)}>
+                     <FontAwesomeIcon icon={faTrash} style={{ color: "#8f0e05" }} className='fs-4' />
+                   </div>
+                 </div>
+             </Row>
+           </Card.Footer>
+         </Card>
+     </motion.div>
+   </Col>
+
             ))}
-          </tbody>
-        </Table>
+            </Row>
       </Container>
+
+
+    
+
     </div>
   );
 }

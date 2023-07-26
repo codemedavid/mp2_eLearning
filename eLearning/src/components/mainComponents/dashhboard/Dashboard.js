@@ -106,7 +106,7 @@ function Dashboard() {
   }
 
   if (courses.length === 0) {
-    return <h1>You have to log in</h1>;
+    return <h3>No Courses Available</h3>;
   }
 
   return (

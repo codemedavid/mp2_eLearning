@@ -25,6 +25,7 @@ function AdminDashboard() {
 
       <Container>
         <CourseListCard />
+        <br />
       </Container>
     </div>
   );

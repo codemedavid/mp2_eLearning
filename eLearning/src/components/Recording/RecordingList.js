@@ -22,7 +22,7 @@ function RecordingList() {
     <div className="lesson__card">
     {
       lesson.map(lesson => {
-        return <LessonCard lesson={lesson}/>
+        return  <LessonCard key={lesson.id} lesson={lesson} course_id={course_id} />;
       })
     }
      

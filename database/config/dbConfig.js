@@ -1,8 +1,8 @@
 module.exports = {
-    HOST: 'localhost',
+    HOST: '54.179.147.48',
     USER: 'admin',
-    PASSWORD: 'admin',
-    DB: 'eLearning_db',
+    PASSWORD: '123Admin!@#',
+    DB: 'wd65p-mp02-grp07',
     dialect: 'mysql',
     secretKey: 'your-secret-key',
 

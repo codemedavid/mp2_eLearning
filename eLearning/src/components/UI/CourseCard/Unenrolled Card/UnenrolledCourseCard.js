@@ -56,7 +56,7 @@ const UnenrolledCourseCard = ({ task }) => {
             <Card.Img variant='top' src={task.img} style={{ height: '150px', objectFit: 'cover' }} />
             <Card.Body className='bg-white shadow-lg'>
               <Card.Title className='text-black no-text-decoration card__title title__height'>
-                {task.title}
+              {task.title.length > 15 ? task.title.slice(0, 15) + '...' : task.title}
               </Card.Title>
               <Card.Text className='card__text no-text-decoration'>
                 {task.description.split(' ').slice(0, 8).join(' ')}

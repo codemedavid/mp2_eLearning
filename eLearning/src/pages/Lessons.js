@@ -1,10 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import Recording from '../components/Recording/Recording'
 import RecordingList from '../components/Recording/RecordingList'
 import InstructorCard from '../components/UI/InstructorCard.js/InstructorCard'
 import Header from '../components/mainComponents/header/Header'
+import { useNavigate } from 'react-router-dom'
 function Lessons() {
+  const navigate = useNavigate()
+  const token = localStorage.getItem('token');
+  useEffect(() => {
+    if (!token) {
+      navigate('/login');
+    }
+  }, [navigate, token]);
   return (
     <div>
     <Header />

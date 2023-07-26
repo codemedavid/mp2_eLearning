@@ -89,7 +89,7 @@ function LoginPage() {
       localStorage.setItem('token', token);
       localStorage.setItem('userType', userType);
       localStorage.setItem('userId', userId)
-      navigate('/login')
+      navigate('/')
       // Redirect to the appropriate page based on user type
       if(token != null){
         if (userType === 'instructor') {
